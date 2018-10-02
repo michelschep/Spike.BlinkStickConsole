@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using BlinkStickDotNet;
 
 namespace BlinkStickConsole
 {
@@ -10,6 +7,18 @@ namespace BlinkStickConsole
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("Test BlinkStick device");
+
+            var led = BlinkStick.FindFirst();
+
+            led.OpenDevice();
+            led.Blink(RgbColor.FromString("green"), 3);
+            led.SetColor(RgbColor.FromString("red"));
+
+            Console.WriteLine("Press a key to quit program");
+            Console.ReadLine();
+
+            led.TurnOff();
         }
     }
 }
